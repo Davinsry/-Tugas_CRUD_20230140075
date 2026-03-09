@@ -1,12 +1,12 @@
 package com.example.pertemuan3.service;
 
-import com.example.pertemuan3.model.Ktp;
+import com.example.pertemuan3.dto.KtpDto;
 import java.util.List;
 
 public interface KtpService {
-    Ktp createKtp(Ktp ktp);
-    List<Ktp> getAllKtp();
-    Ktp getKtpById(Integer id);
-    Ktp updateKtp(Integer id, Ktp ktp);
+    KtpDto createKtp(KtpDto ktpDto);
+    List<KtpDto> getAllKtp();
+    KtpDto getKtpById(Integer id);
+    KtpDto updateKtp(Integer id, KtpDto ktpDto);
     void deleteKtp(Integer id);
 }

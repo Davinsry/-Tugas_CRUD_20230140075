@@ -1,11 +1,14 @@
 package com.example.pertemuan3.service.impl;
 
-import com.example.pertemuan3.model.Ktp;
+import com.example.pertemuan3.dto.KtpDto;
+import com.example.pertemuan3.entity.Ktp;
+import com.example.pertemuan3.mapper.KtpMapper;
 import com.example.pertemuan3.repository.KtpRepository;
 import com.example.pertemuan3.service.KtpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class KtpServiceImpl implements KtpService {
@@ -13,30 +16,37 @@ public class KtpServiceImpl implements KtpService {
     @Autowired
     private KtpRepository ktpRepository;
 
+    @Autowired
+    private KtpMapper ktpMapper;
+
     @Override
-    public Ktp createKtp(Ktp ktp) {
-        if (ktpRepository.findByNomorKtp(ktp.getNomorKtp()).isPresent()) {
-            throw new RuntimeException("Nomor KTP already exists: " + ktp.getNomorKtp());
+    public KtpDto createKtp(KtpDto ktpDto) {
+        if (ktpRepository.findByNomorKtp(ktpDto.getNomorKtp()).isPresent()) {
+            throw new RuntimeException("Nomor KTP already exists: " + ktpDto.getNomorKtp());
         }
-        return ktpRepository.save(ktp);
+        Ktp ktp = ktpMapper.toEntity(ktpDto);
+        return ktpMapper.toDto(ktpRepository.save(ktp));
     }
 
     @Override
-    public List<Ktp> getAllKtp() {
-        return ktpRepository.findAll();
+    public List<KtpDto> getAllKtp() {
+        return ktpRepository.findAll().stream()
+                .map(ktpMapper::toDto)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public Ktp getKtpById(Integer id) {
-        return ktpRepository.findById(id)
+    public KtpDto getKtpById(Integer id) {
+        Ktp ktp = ktpRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("KTP not found with id: " + id));
+        return ktpMapper.toDto(ktp);
     }
 
     @Override
-    public Ktp updateKtp(Integer id, Ktp ktpDetails) {
-        Ktp ktp = getKtpById(id);
+    public KtpDto updateKtp(Integer id, KtpDto ktpDetails) {
+        Ktp ktp = ktpRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("KTP not found with id: " + id));
         
-        // Check if new nomorKtp already exists in another record
         ktpRepository.findByNomorKtp(ktpDetails.getNomorKtp())
                 .ifPresent(existingKtp -> {
                     if (!existingKtp.getId().equals(id)) {
@@ -50,12 +60,13 @@ public class KtpServiceImpl implements KtpService {
         ktp.setTanggalLahir(ktpDetails.getTanggalLahir());
         ktp.setJenisKelamin(ktpDetails.getJenisKelamin());
         
-        return ktpRepository.save(ktp);
+        return ktpMapper.toDto(ktpRepository.save(ktp));
     }
 
     @Override
     public void deleteKtp(Integer id) {
-        Ktp ktp = getKtpById(id);
+        Ktp ktp = ktpRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("KTP not found with id: " + id));
         ktpRepository.delete(ktp);
     }
 }
