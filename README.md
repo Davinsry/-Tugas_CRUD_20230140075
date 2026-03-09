@@ -37,9 +37,9 @@ A full-stack web application for managing KTP (Kartu Tanda Penduduk) data, built
 ```json
 {
   "nomorKtp": "1234567890123456",
-  "namaLengkap": "John Doe",
-  "alamat": "Jalan Merdeka No. 1",
-  "tanggalLahir": "1990-01-01",
+  "namaLengkap": "Davin Surya",
+  "alamat": "Jalan RingRoad Utara",
+  "tanggalLahir": "2005-01-01",
   "jenisKelamin": "LAKI-LAKI"
 }
 ```
@@ -47,13 +47,15 @@ A full-stack web application for managing KTP (Kartu Tanda Penduduk) data, built
 ## Screenshots
 
 ### 1. Main Dashboard & Data Entry
-![KTP List](ktp_list.png)
+![KTP List](foto/image.png)
 
 ### 2. Editing Data
-![Edit Form](ktp_edit_form.png)
+![Edit Form](foto/image1.png)
 
 ### 3. Updated Data
-![Updated List](ktp_updated_list.png)
+![Updated List](foto/image2.png)
+### 4. Delete Data
+![Delete Data](foto/image3.png)
 
 ## How to Run
 
