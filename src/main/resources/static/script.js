@@ -19,11 +19,12 @@ function loadKtp() {
     $.ajax({
         url: API_URL,
         method: 'GET',
-        success: function(data) {
+        success: function(response) {
+            const data = response.data;
             const tableBody = $('#ktp-list');
             tableBody.empty();
 
-            if (data.length === 0) {
+            if (!data || data.length === 0) {
                 tableBody.append('<tr><td colspan="6" style="text-align: center;">Tidak ada data ditemukan</td></tr>');
             } else {
                 data.forEach(ktp => {
@@ -69,12 +70,12 @@ function saveKtp() {
         contentType: 'application/json',
         data: JSON.stringify(ktpData),
         success: function(response) {
-            showNotification(isUpdate ? 'Data berhasil diperbarui!' : 'Data berhasil ditambahkan!', 'success');
+            showNotification(response.message || (isUpdate ? 'Data berhasil diperbarui!' : 'Data berhasil ditambahkan!'), 'success');
             resetForm();
             loadKtp();
         },
         error: function(err) {
-            showNotification('Gagal menyimpan data: ' + (err.responseJSON?.message || 'NIK mungkin sudah terdaftar'), 'error');
+            showNotification('Gagal menyimpan data: ' + (err.responseJSON?.message || 'Error Server'), 'error');
         }
     });
 }
@@ -83,7 +84,8 @@ function editKtp(id) {
     $.ajax({
         url: `${API_URL}/${id}`,
         method: 'GET',
-        success: function(ktp) {
+        success: function(response) {
+            const ktp = response.data;
             $('#ktp-id').val(ktp.id);
             $('#nomorKtp').val(ktp.nomorKtp);
             $('#namaLengkap').val(ktp.namaLengkap);
@@ -108,8 +110,8 @@ function deleteKtp(id) {
         $.ajax({
             url: `${API_URL}/${id}`,
             method: 'DELETE',
-            success: function() {
-                showNotification('Data berhasil dihapus!', 'success');
+            success: function(response) {
+                showNotification(response.message || 'Data berhasil dihapus!', 'success');
                 loadKtp();
             },
             error: function(err) {
