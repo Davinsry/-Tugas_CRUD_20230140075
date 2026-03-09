@@ -18,12 +18,12 @@ A full-stack web application for managing KTP (Kartu Tanda Penduduk) data, built
 - **AJAX Driven**: All operations occur without page refreshes.
 - **Modern UI**: Premium look with Outfit typography and smooth transitions.
 
-## Tech Stack
+## 🛠️ Tech Stack
 - **Backend**: Java 25, Spring Boot 4.0.3, Spring Data JPA, MySQL Connector.
 - **Frontend**: HTML5, Vanilla CSS, JavaScript (jQuery 3.6.0).
 - **Database**: MySQL 8+ (running on port 3308).
 
-## API Documentation
+## 📄 API Documentation
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -44,20 +44,42 @@ A full-stack web application for managing KTP (Kartu Tanda Penduduk) data, built
 }
 ```
 
-## Screenshots
+## 📸 Screenshots
 
-### 1. Main Dashboard & Data Entry
+### 🖥️ User Interface
+---
+
+#### 1. Main Dashboard & Data Entry
 ![KTP List](foto/image.png)
 
-### 2. Editing Data
+#### 2. Editing Data
 ![Edit Form](foto/image1.png)
 
-### 3. Updated Data
+#### 3. Updated Data
 ![Updated List](foto/image2.png)
-### 4. Delete Data
+
+#### 4. Delete Confirmation
 ![Delete Data](foto/image3.png)
 
-## How to Run
+### 🚀 API Testing (Postman)
+---
+
+#### 1. POST (Create KTP)
+![POST](foto/POST.png)
+
+#### 2. GET (Get All KTP)
+![GET](foto/GET.png)
+
+#### 3. GET by ID
+![GET ID](foto/GET_id.png)
+
+#### 4. UPDATE (Put KTP)
+![UPDATE](foto/UPDATE.png)
+
+#### 5. DELETE (Delete KTP)
+![DELETE](foto/DELETE.png)
+
+## 🚀 How to Run
 
 1. **Database Setup**:
    - Create a database named `deploy_3`.
