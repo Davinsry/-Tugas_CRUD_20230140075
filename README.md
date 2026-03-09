@@ -1,8 +1,16 @@
-# KTP Management System
+# 🪪 KTP Management System
+
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
+![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black)
+![jQuery](https://img.shields.io/badge/jquery-%230769AD.svg?style=for-the-badge&logo=jquery&logoColor=white)
 
 A full-stack web application for managing KTP (Kartu Tanda Penduduk) data, built with Spring Boot, MySQL, and jQuery Ajax.
 
-## Features
+## ✨ Features
 - **Create**: Add new KTP records with validation.
 - **Read**: View all KTP records in a modern, responsive table.
 - **Update**: Edit existing KTP records.
